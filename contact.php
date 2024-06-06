@@ -37,7 +37,6 @@ if (!empty($_POST)) {
        }
 
    } else {
-
        $allErrors = join('<br/>', $errors);
        $errorMessage = "<p style='color: red;'>{$allErrors}</p>";
    }
