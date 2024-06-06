@@ -23,7 +23,7 @@ if (!empty($_POST)) {
    }
 
    if (empty($errors)) {
-       $toEmail = 'iamvigneshvikram@gmail.com';
+       $toEmail = 'iamvigneshvikram@email.com';
        $emailSubject = 'New email from your contact form';
        $headers = ['From' => $email, 'Reply-To' => $email, 'Content-type' => 'text/html; charset=utf-8'];
        $bodyParagraphs = ["Name: {$name}", "Email: {$email}", "Message:", $message];
@@ -37,6 +37,7 @@ if (!empty($_POST)) {
        }
 
    } else {
+
        $allErrors = join('<br/>', $errors);
        $errorMessage = "<p style='color: red;'>{$allErrors}</p>";
    }
