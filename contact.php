@@ -1,54 +1,46 @@
-<!DOCTYPE html>
-<html>
+<?php
 
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
+$errors = [];
+$errorMessage = '';
 
-<body>
-    <?php
-    if (isset($_POST['name']) && isset($_POST['email'])) {
+if (!empty($_POST)) {
+   $name = $_POST['name'];
+   $email = $_POST['email'];
+   $message = $_POST['message'];
 
-        $name = $_POST['name'];
-        $phoneNumber    = $_POST['phoneNumber'];
-        $email   = $_POST['email'];
-        $message     = $_POST['message'];
+   if (empty($name)) {
+       $errors[] = 'Name is empty';
+   }
 
+   if (empty($email)) {
+       $errors[] = 'Email is empty';
+   } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+       $errors[] = 'Email is invalid';
+   }
 
-        $to = 'iamvigneshvikram@gmail.com';
-        $subject = "Vignesh Vikram Contant Form New Submission";
-        $body = '<html>
-                <body>
-                    <h2>Vignesh Vikram Contact Form</h2>
-                    <p>Name :' . $name . '</p>
-                    <p>Phone Number :' . $phoneNumber . '</p>
-                    <p>Email :' . $email . '</p>
-                    <p>Message :' . $message . '</p>
-                  </body>
-            </html>';
+   if (empty($message)) {
+       $errors[] = 'Message is empty';
+   }
 
+   if (empty($errors)) {
+       $toEmail = 'iamvigneshvikram@gmail.com';
+       $emailSubject = 'New email from your contact form';
+       $headers = ['From' => $email, 'Reply-To' => $email, 'Content-type' => 'text/html; charset=utf-8'];
+       $bodyParagraphs = ["Name: {$name}", "Email: {$email}", "Message:", $message];
+       $body = join(PHP_EOL, $bodyParagraphs);
 
-        //headers
-        $headers = "From: " . $name . " " . $phoneNumber . " " . $email . " \r\n";
-        $headers = "Reply-To: " . $email . "\r\n";
-        $headers = "MIME-Version: 1.0\r\n";
-        $headers = "Content-type: text/html; charset-utf-8";
+       if (mail($toEmail, $emailSubject, $body, $headers)) {
 
-        //send
-        $send = mail($to, $subject, $body, $headers);
-        if ($send) {
-            echo '<br>';
-        } else {
-            echo 'Error.';
-        }
-    }
-    ?>
+           header('Location: thank-you.html');
+       } else {
+           $errorMessage = 'Oops, something went wrong. Please try again later';
+       }
 
-    <script>
-        window.location.href = './';
-    </script>
+   } else {
 
-</body>
+       $allErrors = join('<br/>', $errors);
+       $errorMessage = "<p style='color: red;'>{$allErrors}</p>";
+   }
+}
 
-</html>
+?>
