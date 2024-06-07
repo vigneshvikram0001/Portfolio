@@ -35,9 +35,10 @@ if (!empty($_POST)) {
        } else {
            $errorMessage = 'Oops, something went wrong. Please try again later';
        }
+       echo "mail error";
 
    } else {
-
+    echo "error";
        $allErrors = join('<br/>', $errors);
        $errorMessage = "<p style='color: red;'>{$allErrors}</p>";
    }
