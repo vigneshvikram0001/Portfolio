@@ -161,7 +161,6 @@
           "slide04",
           "slide05",
           "slide06",
-          "slide07",
         ],
         menu: "#nav",
         lazyLoad: true,

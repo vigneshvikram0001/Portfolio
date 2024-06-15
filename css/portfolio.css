@@ -23,11 +23,10 @@
 .portfolio__item {
   margin-bottom: 35px;
   overflow: hidden;
-  transition: all .35s linear;
+  transition: all 0.35s linear;
 }
-.portfolio__item:hover{
+.portfolio__item:hover {
   transform: scale(1.1);
-
 }
 .portfolio__item:hover .portfolio__item__text h4:after {
   opacity: 1;
@@ -39,11 +38,11 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   margin-bottom: 28px;
 }
 .portfolio__item__video .play-btn {
@@ -218,7 +217,6 @@
 }
 /* Medium Device = 1200px */
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
-
   .portfolio__filter li {
     padding: 6px 15px;
   }
@@ -226,4 +224,180 @@
   .portfolio__filter li {
     margin-bottom: 10px;
   }
+}
+
+#services, #contact{
+  background: url("../images/service_bg.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* about us */
+.support-company-area .support-location-img {
+  position: relative;
+}
+.support-company-area .support-location-img::before {
+  position: absolute;
+  content: "";
+  width: 92%;
+  height: 95%;
+  border: 9px solid rgba(255, 255, 255, 0.3);
+  left: -4%;
+  z-index: 0;
+  top: -4%;
+}
+.support-company-area .right-caption {
+  text-align: left !important;
+}
+@media only screen and (min-width: 1200px) and (max-width: 1250px) {
+  .support-company-area .support-location-img::before {
+    left: -2%;
+  }
+}
+@media (max-width: 767px) {
+  .support-company-area .support-location-img::before {
+    display: none;
+  }
+}
+.support-company-area .support-location-img img {
+  width: 100%;
+}
+.support-company-area .support-location-img .support-img-cap {
+  position: absolute;
+  bottom: 138px;
+  right: -104px;
+  transform: rotate(-90deg);
+}
+@media (max-width: 767px) {
+  .support-company-area .support-location-img .support-img-cap {
+    right: -69px;
+  }
+}
+.support-company-area .support-location-img .support-img-cap span {
+  background: rgba(1, 75, 133, 0.8);
+  padding: 19px 55px;
+  font-size: 60px;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+@media (max-width: 767px) {
+  .support-company-area .support-location-img .support-img-cap span {
+    padding: 6px 40px;
+    font-size: 38px;
+  }
+}
+@media (max-width: 478px) {
+  .support-company-area .support-location-img .support-img-cap {
+    display: none;
+  }
+}
+
+/* contact us */
+
+.form-container {
+  display: flex;
+}
+
+.left-container {
+  flex: 1;
+  height: 480px;
+  background-color: #003d80;
+}
+.right-container {
+  display: flex;
+  flex: 1;
+  height: 520px;
+  background-color: #ffffff;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-container {
+  display: flex;
+  flex: 1;
+  height: 520px;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+}
+
+.left-container p {
+  font-size: 0.9rem;
+}
+
+.right-inner-container {
+  width: 100%;
+  height: 90%;
+  text-align: center;
+  padding: 30px 10px;
+}
+
+.left-inner-container {
+  height: 90%;
+  padding: 20px 10px;
+  width: 80%;
+  text-align: center;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+input,
+textarea {
+  background-color: #003d80;
+  border: none;
+  padding: 20px 15px;
+  margin: 8px 0;
+  width: 100%;
+  font-size: 0.8rem;
+  border-radius: 5px;
+}
+
+input:focus,
+textarea:focus {
+  outline: 1px solid teal;
+}
+
+#contact button {
+  border-radius: 3px;
+  border: 1px solid #003d80;
+  background-color: #007aff;
+  color: #ffffff;
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  width: 100%;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.7;
+}
+@media only screen and (max-width: 600px) {
+  .lg-view {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .sm-view {
+    display: none;
+  }
+}
+@media (max-width: 768px) {
+  .form-container {
+    flex-direction: column;
+  }
+}
+
+form p {
+  text-align: left;
 }
