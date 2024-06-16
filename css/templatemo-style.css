@@ -102,7 +102,18 @@ figure {
   opacity: 1 !important;
 }
 .hero {
-  background: url("../images/hero.jpg");
+  position: relative;
+  /* background: url("../images/hero.jpg"); */
+}
+.hero-img{
+  position: absolute;
+  width: 110%;
+  height: 100vh;
+  top: 0;
+  transition: all .2s ease;
+}
+.hero-img img{
+  height: 100%;
 }
 video {
   position: fixed;

@@ -1,3 +1,22 @@
+body {
+  position: relative;
+}
+img:hover{
+  cursor: pointer;
+}
+#movediv {
+  position: absolute;
+  top: 10px;
+  z-index: 10000;
+  left: 10px;
+  height: 20px;
+  width: 20px;
+  background-color: #1b4be8;
+  border-radius: 50px;
+  box-shadow: 0 0 15px 1px #1b4be8;
+  transition: all 0.1s linear;
+}
+
 .portfolio__filter {
   text-align: center;
   margin-bottom: 40px;
@@ -226,7 +245,8 @@
   }
 }
 
-#services, #contact{
+#services,
+#contact {
   background: url("../images/service_bg.jpg");
   background-position: center;
   background-size: cover;
@@ -350,10 +370,11 @@ input,
 textarea {
   background-color: #003d80;
   border: none;
-  padding: 20px 15px;
+  color: #ffffff;
+  padding: 15px 15px;
   margin: 8px 0;
   width: 100%;
-  font-size: 0.8rem;
+  font-size: 1rem;
   border-radius: 5px;
 }
 
@@ -364,7 +385,7 @@ textarea:focus {
 
 #contact button {
   border-radius: 3px;
-  border: 1px solid #003d80;
+  border: 1px solid #007aff;
   background-color: #007aff;
   color: #ffffff;
   display: block;
@@ -396,6 +417,12 @@ button:hover {
   .form-container {
     flex-direction: column;
   }
+  .mouse_move{
+    display: none;
+  }
+  .hero-img{
+  width: 100%;
+}
 }
 
 form p {

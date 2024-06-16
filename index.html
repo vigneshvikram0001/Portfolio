@@ -16,19 +16,23 @@
     <link rel="stylesheet" type="text/css" href="css/fullpage.min.css">
     <link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
     <link rel="stylesheet" href="./css/animate.css">
+    <link rel="stylesheet" href="./css/custom-animate.css">
     <link rel="stylesheet" href="./css/templatemo-style.css">
     <link rel="stylesheet" href="./css/responsive.css">
     <link rel="stylesheet" href="./css/ani.css">
     <link rel="stylesheet" href="./css/portfolio.css">
+
     <style>
         .typewrite>.wrap {
             font-size: 5rem !important;
             font-weight: bold;
+            position: relative;
+            z-index: 100;
         }
 
         @media(max-width: 576px) {
             .typewrite>.wrap {
-                font-size: 3rem !important;
+                font-size: 2rem !important;
                 font-weight: bold;
             }
         }
@@ -36,7 +40,6 @@
 </head>
 
 <body>
-
     <div id="video">
         <div class="preloader">
             <div class="preloader-bounce">
@@ -71,10 +74,13 @@
                 </div>
             </div>
         </header>
-
+        <div class="mouse_move">
+            <div id="movediv"></div>
+        </div>
         <div id="fullpage" class="fullpage-default">
 
             <div class="section hero animated-row" data-section="slide01">
+                <div class="hero-img"><img src="./images/hero.jpg" class="hero_hover"></div>
                 <div class="section-inner">
                     <div class="welcome-box">
                         <span class="welcome-first animate" data-animate="fadeInUp">Hello, I'm Vignesh</span>
@@ -98,15 +104,15 @@
                     <div class="support-company-area pb-2 support-padding fix">
                         <div class="container">
                             <div class="row align-items-center">
-                                <div class="col-xl-6 col-lg-6 col-12 animate" data-animate="fadeInRight">
+                                <div class="col-xl-6 col-lg-6 col-12 animate" data-animate="fadeInUp">
                                     <div class="support-location-img mb-50">
-                                        <img src="./images/Vignesh_vikram.png" alt="">
+                                        <img src="./images/Vignesh_vikram.png" class="float-bob-y" alt="Vignesh Vikram">
                                         <div class="support-img-cap">
                                             <span>Vignesh</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-6 col-lg-6 col-12 animate" data-animate="fadeInLeft">
+                                <div class="col-xl-6 col-lg-6 col-12 animate" data-animate="fadeInUp">
                                     <div class="right-caption">
                                         <!-- Section Tittle -->
                                         <div class="section-tittle section-tittle2">
@@ -137,14 +143,24 @@
                 </div>
             </div>
 
+            <div class="cube_animation">
+                <div class="cube">
+                    <div class="s1"></div>
+                    <div class="s2"></div>
+                    <div class="s3"></div>
+                    <div class="s4"></div>
+                    <div class="s5"></div>
+                    <div class="s6"></div>
+                </div>
+            </div>
 
             <div class="section animated-row" data-section="slide03" id="services">
                 <div class="section-inner">
                     <div class="row justify-content-center">
                         <div class="col-md-8 wide-col-laptop">
-                            <div class="title-block animate" data-animate="fadeInUp">
-                                <span>Services</span>
-                                <h2>What I Do?</h2>
+                            <div class="title-block">
+                                <span class="animate" data-animate="fadeInUp">Services</span>
+                                <h2 class="animate" data-animate="fadeInUp">What I Do?</h2>
                             </div>
                             <div class="services-section">
                                 <div class="services-list owl-carousel">
@@ -213,9 +229,9 @@
                 <div class="section-inner">
                     <div class="row justify-content-center">
                         <div class="col-md-7 wide-col-laptop">
-                            <div class="title-block animate" data-animate="fadeInUp">
-                                <span>My Skills</span>
-                                <h2>What i’m good?</h2>
+                            <div class="title-block">
+                                <span class="animate" data-animate="fadeInUp">My Skills</span>
+                                <h2 class="animate" data-animate="fadeInUp">What i’m good?</h2>
                             </div>
                             <div class="skill_column mt-5 animate" data-animate="fadeInUp">
                                 <div class="row">
@@ -256,7 +272,7 @@
                         <div class="col-md-8 wide-col-laptop">
                             <div class="title-block animate" data-animate="fadeInUp">
                                 <span>My Work</span>
-                                <h2>what i’ve done?</h2>
+                                <h2 class="animate" data-animate="fadeInUp">what i’ve done?</h2>
                             </div>
                             <!-- Portfolio Section Begin -->
                             <section class="portfolio spad text-white">
@@ -321,6 +337,16 @@
                             <!-- Portfolio Section End -->
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="cube_animation-2">
+                <div class="cube">
+                    <div class="s1"></div>
+                    <div class="s2"></div>
+                    <div class="s3"></div>
+                    <div class="s4"></div>
+                    <div class="s5"></div>
+                    <div class="s6"></div>
                 </div>
             </div>
 
@@ -390,7 +416,7 @@
                     <div class="container">
                         <div class="form-container row">
                             <div class="left-container col-12 col-md-6 animate" data-animate="fadeInUp">
-                                <div class="left-inner-container">
+                                <div class="left-inner-container float-bob-y">
                                     <h2>Let's Connect</h2>
                                     <p>Whether you have a question, want to start a project or simply want to connect.
                                     </p>
@@ -511,7 +537,26 @@
             css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
             document.body.appendChild(css);
         };
+        // Mouse Move
+        var moveDiv = document.getElementById('movediv');
 
+        window.onmousemove = function (e) {
+            var x = e.pageX,
+                y = e.pageY;
+            moveDiv.style.top = (y - 20) + 'px';
+            moveDiv.style.left = (x - 20) + 'px';
+        };
+        // hero hover
+        const bg = document.querySelector('.hero-img');
+        const windowWidth = window.innerWidth / 5;
+        const windowHeight = window.innerHeight / 5;
+
+        bg.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX / windowWidth;
+            const mouseY = e.clientY / windowHeight;
+
+            bg.style.transform = `translate3d(-${mouseX}%, -${mouseY}%, 0)`;
+        });
     </script>
     <script src="./js/mix.js"></script>
 
