@@ -426,11 +426,11 @@
                             </div>
                             <div class="right-container col-12 col-md-6 animate" data-animate="fadeInUp">
                                 <div class="right-inner-container">
-                                    <form action="contact.php" method="post">
-                                        <input type="text" placeholder="Name *" required />
-                                        <input type="email" placeholder="Email *" required />
-                                        <input type="phone" placeholder="Phone" required />
-                                        <textarea rows="4" placeholder="Message"></textarea>
+                                    <form action="contact.php" method="POST">
+                                        <input type="text" placeholder="Name *" name="name" required />
+                                        <input type="email" placeholder="Email *" name="email" required />
+                                        <input type="phone" placeholder="Phone" name="phone" required />
+                                        <textarea rows="4" placeholder="Message" name="message"></textarea>
                                         <button type="submit">Submit</button>
                                     </form>
                                 </div>
