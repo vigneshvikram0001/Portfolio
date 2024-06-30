@@ -1,47 +1,78 @@
 <?php
+if (isset($_POST['email'])) {
 
-$errors = [];
-$errorMessage = '';
+    // REPLACE THIS 2 LINES AS YOU DESIRE
+    $email_to = "iamvigneshvikram@gmail.com";
+    $email_subject = "You've got a new submission";
 
-if (!empty($_POST)) {
-   $name = $_POST['name'];
-   $email = $_POST['email'];
-   $message = $_POST['message'];
+    function problem($error)
+    {
+        echo "Oh looks like there is some problem with your form data: <br><br>";
+        echo $error . "<br><br>";
+        echo "Please fix those to proceed.<br><br>";
+        die();
+    }
 
-   if (empty($name)) {
-       $errors[] = 'Name is empty';
-   }
+    // validation expected data exists
+    if (
+        !isset($_POST['fullName']) ||
+        !isset($_POST['email']) ||
+        !isset($_POST['phone']) ||
+        !isset($_POST['message'])
+    ) {
+        problem('Oh looks like there is some problem with your form data.');
+    }
 
-   if (empty($email)) {
-       $errors[] = 'Email is empty';
-   } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-       $errors[] = 'Email is invalid';
-   }
+    $name = $_POST['fullName']; // required
+    $email = $_POST['email']; // required
+    $phone = $_POST['phone']; // required
+    $message = $_POST['message']; // required
 
-   if (empty($message)) {
-       $errors[] = 'Message is empty';
-   }
+    $error_message = "";
+    $email_exp = '/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/';
 
-   if (empty($errors)) {
-       $toEmail = 'iamvigneshvikram@email.com';
-       $emailSubject = 'New email from your contact form';
-       $headers = ['From' => $email, 'Reply-To' => $email, 'Content-type' => 'text/html; charset=utf-8'];
-       $bodyParagraphs = ["Name: {$name}", "Email: {$email}", "Message:", $message];
-       $body = join(PHP_EOL, $bodyParagraphs);
+    if (!preg_match($email_exp, $email)) {
+        $error_message .= 'Email address does not seem valid.<br>';
+    }
 
-       if (mail($toEmail, $emailSubject, $body, $headers)) {
+    $string_exp = "/^[A-Za-z .'-]+$/";
 
-           header('Location: thank-you.html');
-       } else {
-           $errorMessage = 'Oops, something went wrong. Please try again later';
-       }
-       echo "mail error";
+    if (!preg_match($string_exp, $name)) {
+        $error_message .= 'Name does not seem valid.<br>';
+    }
 
-   } else {
-    echo "error";
-       $allErrors = join('<br/>', $errors);
-       $errorMessage = "<p style='color: red;'>{$allErrors}</p>";
-   }
+    if (strlen($message) < 2) {
+        $error_message .= 'Message should not be less than 2 characters<br>';
+    }
+
+    if (strlen($error_message) > 0) {
+        problem($error_message);
+    }
+
+    $email_message = "Form details following:\n\n";
+
+    function clean_string($string)
+    {
+        $bad = array("content-type", "bcc:", "to:", "cc:", "href");
+        return str_replace($bad, "", $string);
+    }
+
+    $email_message .= "Name: " . clean_string($name) . "\n";
+    $email_message .= "Email: " . clean_string($email) . "\n";
+    $email_message .= "Phone Number: " . clean_string($phone) . "\n";
+    $email_message .= "Message: " . clean_string($message) . "\n";
+
+    // create email headers
+    $headers = 'From: ' . $email . "\r\n" .
+        'Reply-To: ' . $email . "\r\n" .
+        'X-Mailer: PHP/' . phpversion();
+    @mail($email_to, $email_subject, $email_message, $headers);
+?>
+
+    <!-- Replace this as your success message -->
+
+    Thanks for contacting us, we will get back to you as soon as possible.
+
+<?php
 }
-
 ?>
