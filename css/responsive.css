@@ -443,4 +443,7 @@
   .testimonial-content:before {
     left: 43%;
   }
+  #video{
+    overflow-x: hidden;
+  }
 }

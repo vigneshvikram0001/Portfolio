@@ -315,7 +315,10 @@ img:hover{
 }
 
 /* contact us */
-
+#connect_btn, #connect_btn:focus{
+  border: none;
+  outline: none;
+}
 .form-container {
   display: flex;
 }
@@ -420,9 +423,6 @@ button:hover {
   .mouse_move{
     display: none;
   }
-  .hero-img{
-  width: 100%;
-}
 }
 
 form p {
