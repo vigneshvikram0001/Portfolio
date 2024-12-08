@@ -325,16 +325,19 @@ img:hover{
 
 .left-container {
   flex: 1;
-  height: 480px;
+  min-height: 560px;
   background-color: #003d80;
 }
 .right-container {
   display: flex;
   flex: 1;
-  height: 520px;
+  min-height: 560px;
   background-color: #ffffff;
   justify-content: center;
   align-items: center;
+}
+.right-container iframe{
+  width: 500px !important;
 }
 
 .left-container {
@@ -416,6 +419,16 @@ button:hover {
     display: none;
   }
 }
+@media (max-width: 1200px) {
+  .right-container iframe{
+  width: 400px !important;
+}
+}
+@media (max-width: 997px) {
+  .right-container iframe{
+  width: 300px !important;
+}
+}
 @media (max-width: 768px) {
   .form-container {
     flex-direction: column;
@@ -423,7 +436,24 @@ button:hover {
   .mouse_move{
     display: none;
   }
+  .right-container iframe{
+  width: 400px !important;
 }
+}
+@media (max-width: 500px) {
+  .right-container iframe{
+  width: 300px !important;
+}
+#contact button{
+  padding: 15px;
+}
+}
+@media (max-width: 340px) {
+  .right-container iframe{
+  width: 230px !important;
+}
+}
+
 
 form p {
   text-align: left;
