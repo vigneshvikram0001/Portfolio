@@ -440,7 +440,6 @@ button:hover {
   width: 400px !important;
 }
 }
-
 @media (max-width: 500px) {
   .right-container iframe{
   width: 300px !important;
